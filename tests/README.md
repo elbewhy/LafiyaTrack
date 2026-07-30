@@ -1,2 +1,2 @@
 #Tests
-This Folder contains tetsts for LafoyaTrack app
+This Folder contains tetsts for LafiyaTrack app
