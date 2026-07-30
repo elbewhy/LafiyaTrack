@@ -1,71 +1,67 @@
-# LafiyaTrack API Design
+# LafiyaTrack API
 
 ## Authentication
 
-POST /login
+POST /api/login
 
-POST /logout
+POST /api/logout
 
 ---
 
-## Users
+## Outreach
 
-GET /users
+GET /api/outreach
 
-POST /users
+POST /api/outreach
 
-PUT /users/{id}
+PUT /api/outreach/{id}
 
-DELETE /users/{id}
+DELETE /api/outreach/{id}
+
+---
+
+## Households
+
+GET /api/households
+
+POST /api/households
 
 ---
 
 ## Children
 
-GET /children
+GET /api/children
 
-POST /children
+POST /api/children
 
-GET /children/{id}
-
-PUT /children/{id}
-
-DELETE /children/{id}
+GET /api/children/{id}
 
 ---
 
 ## Screenings
 
-GET /screenings
+GET /api/screenings
 
-POST /screenings
-
-GET /screenings/{id}
+POST /api/screenings
 
 ---
 
 ## Referrals
 
-GET /referrals
+GET /api/referrals
 
-POST /referrals
-
-PUT /referrals/{id}
+POST /api/referrals
 
 ---
 
 ## Follow-ups
 
-GET /followups
+GET /api/followups
 
-POST /followups
-
-PUT /followups/{id}
+POST /api/followups
 
 ---
 
-## Synchronization
+## Reports
 
-POST /sync
-
-GET /sync/status
+GET /api/reports
