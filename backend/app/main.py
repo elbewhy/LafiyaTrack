@@ -1,24 +1,19 @@
 from fastapi import FastAPI
 
-app = FastAPI(
+from app.api.router import api_router
 
-    title="LafiyaTrack API",
+app=FastAPI(
 
-    version="0.1.0",
+title="LafiyaTrack API",
 
-    description="Offline-first Community Nutrition Platform"
+version="0.1.0"
 
 )
 
-@app.get("/")
-def root():
+app.include_router(
 
-    return {
+api_router,
 
-        "name":"LafiyaTrack",
+prefix="/api"
 
-        "version":"0.1.0",
-
-        "status":"running"
-
-    }
+)
