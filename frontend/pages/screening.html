@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nutrition Screening | LafiyaTrack</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/screening.css">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+<h2 class="page-title">
+Nutrition Screening
+</h2>
+
+<div class="form-card">
+
+<form id="screeningForm">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+MUAC <span class="required">*</span>
+
+</label>
+
+<div class="input-group">
+
+<input
+type="number"
+class="form-control"
+id="muac"
+min="80"
+max="300"
+required>
+
+<span class="input-group-text">mm</span>
+
+</div>
+
+<small class="text-muted">
+Enter MUAC between 80 mm and 300 mm.
+</small>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Bilateral Pitting Edema <span class="required">*</span>
+
+</label>
+
+<select
+class="form-select"
+id="edema"
+required>
+
+<option value="">Select</option>
+
+<option value="yes">Yes</option>
+
+<option value="no">No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Weight (Optional)
+
+</label>
+
+<div class="input-group">
+
+<input
+type="number"
+step="0.1"
+class="form-control"
+id="weight">
+
+<span class="input-group-text">kg</span>
+
+</div>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Height / Length (Optional)
+
+</label>
+
+<div class="input-group">
+
+<input
+type="number"
+step="0.1"
+class="form-control"
+id="height">
+
+<span class="input-group-text">cm</span>
+
+</div>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-success w-100">
+
+Calculate & Continue
+
+</button>
+
+</form>
+
+<hr>
+
+<div id="resultCard" style="display:none;"></div>
+
+</div>
+
+</div>
+
+<script src="../js/services/nutrition-engine.js"></script>
+<script src="../js/screening.js"></script>
+
+</body>
+
+</html>
