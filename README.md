@@ -1,22 +1,88 @@
 # LafiyaTrack
 
-> Offline-first digital child nutrition monitoring platform.
+> No child will be left behind.
+>
+> Every child deserves good nutrition.
 
-LafiyaTrack is an offline-first Progressive Web App (PWA) developed by **A&M TECH FOUNDRY** to help Community Health Extension Workers (CHEWs) identify, monitor, refer, and follow up children at risk of malnutrition.
+## Overview
 
-## Vision
+LafiyaTrack is an offline-first community nutrition platform developed by A&M TECH FOUNDRY to support Community Health Extension Workers (CHEWs) in identifying, tracking, referring, and following up children at risk of malnutrition.
 
-Improve child nutrition outcomes by providing health workers with reliable digital tools that work even without internet connectivity.
+The platform is designed for use in low-resource settings where internet connectivity is limited or unavailable.
 
-## Key Features
+---
 
-- Offline data collection
-- MUAC screening
-- Bilateral edema assessment
-- Child registration
-- Referral management
-- Follow-up tracking
-- Synchronization when internet becomes available
+## Problem
+
+Many communities continue to face childhood malnutrition due to:
+
+- Delayed case detection
+- Weak follow-up systems
+- Paper-based data collection
+- Poor reporting
+- Limited nutrition education
+
+---
+
+## Solution
+
+LafiyaTrack enables health workers to:
+
+- Register households
+- Register children
+- Conduct nutrition screening
+- Detect MAM and SAM early
+- Generate referrals
+- Schedule follow-ups
+- Work completely offline
+- Synchronize data when internet becomes available
+
+---
+
+## MVP Features
+
+- Authentication
+- Outreach Management
+- Household Registration
+- Child Registration
+- Nutrition Screening
+- Referral Management
+- Follow-up Tracking
+- Dashboard Analytics
+- Offline-first Architecture
+
+---
+
+## Technology Stack
+
+Frontend:
+- HTML
+- Bootstrap
+- JavaScript
+
+Backend:
+- FastAPI
+- SQLModel
+- SQLite
+
+Future:
+- PostgreSQL
+- Docker
+- Progressive Web App (PWA)
+
+---
+
+## Project Status
+
+🚧 Active Development (v0.1.0-alpha)
+
+---
+
+## Mission
+
+No child will be left behind.
+
+Every child deserves good nutrition.- Synchronization when internet becomes available
 - Dashboard and reporting
 
 ## Technology Stack
