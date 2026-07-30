@@ -1,0 +1,17 @@
+function showSuccess(message){
+
+alert(message);
+
+}
+
+function showError(message){
+
+alert(message);
+
+}
+
+function getToday(){
+
+return new Date().toISOString().split("T")[0];
+
+}
