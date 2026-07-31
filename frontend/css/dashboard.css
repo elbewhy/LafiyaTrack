@@ -1,27 +1,53 @@
 body{
 
-background:#F5F7FA;
-
-font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fa;
 
 }
 
-.card{
+.dashboard-card{
 
-border-radius:16px;
+    background:white;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    text-align:center;
 
 }
 
-h2{
+.dashboard-card h5{
 
-color:#2E7D32;
+    color:#666;
+
+    margin-bottom:10px;
 
 }
 
-.btn{
+.dashboard-card h2{
 
-height:52px;
+    font-size:40px;
 
-font-size:18px;
+    font-weight:bold;
+
+}
+
+.success{
+
+    border-left:8px solid #198754;
+
+}
+
+.warning{
+
+    border-left:8px solid #ffc107;
+
+}
+
+.danger{
+
+    border-left:8px solid #dc3545;
 
 }
