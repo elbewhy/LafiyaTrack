@@ -5,9 +5,10 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
 
-<title>Start Outreach | LafiyaTrack</title>
+<title>Start Outreach</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,45 +16,40 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
 <div class="container py-4">
 
-<div class="text-center mb-4">
+<h2 class="mb-4">
 
-<h2 class="text-success fw-bold">
-Start Outreach
+Start Outreach Session
+
 </h2>
-
-<p class="text-muted">
-Create a new outreach session
-</p>
-
-</div>
 
 <form id="outreachForm">
 
 <div class="mb-3">
 
-<label class="form-label">
+<label>
 
 Programme
 
 </label>
 
-<select class="form-select" id="programme">
+<select
+class="form-select"
+id="programme"
+required>
 
-<option selected disabled>Select programme</option>
+<option value="">Select Programme</option>
 
 <option>Routine Nutrition Screening</option>
 
-<option>CMAM Outreach</option>
+<option>CMAM</option>
 
-<option>Vitamin A Campaign</option>
+<option>Growth Monitoring</option>
 
-<option>NGO Programme</option>
-
-<option>Other</option>
+<option>Integrated Outreach</option>
 
 </select>
 
@@ -61,78 +57,48 @@ Programme
 
 <div class="mb-3">
 
-<label class="form-label">
-
-Activity Type
-
-</label>
-
-<select class="form-select" id="activity">
-
-<option selected disabled>Select activity</option>
-
-<option>House-to-house</option>
-
-<option>Health Facility</option>
-
-<option>Community Outreach</option>
-
-<option>School Screening</option>
-
-<option>Follow-up Visit</option>
-
-</select>
-
-</div>
-
-<div class="mb-3">
-
-<label class="form-label">
+<label>
 
 Village
 
 </label>
 
 <input
+
 type="text"
-class="form-control"
+
 id="village"
-placeholder="Search or enter village">
+
+class="form-control"
+
+placeholder="Enter village"
+
+required>
 
 </div>
 
 <div class="mb-3">
 
-<label class="form-label">
+<label>
 
 Date
 
 </label>
 
 <input
+
 type="date"
+
+id="date"
+
 class="form-control"
-id="date">
 
-</div>
-
-<div class="mb-4">
-
-<label class="form-label">
-
-Notes (Optional)
-
-</label>
-
-<textarea
-class="form-control"
-rows="3"
-placeholder="Additional notes..."></textarea>
+required>
 
 </div>
 
 <button
-type="submit"
+
 class="btn btn-success w-100">
 
 Start Outreach
@@ -143,6 +109,7 @@ Start Outreach
 
 </div>
 
+<script src="../js/services/storage.js"></script>
 <script src="../js/outreach.js"></script>
 
 </body>
