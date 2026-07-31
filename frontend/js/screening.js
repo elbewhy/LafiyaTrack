@@ -77,3 +77,8 @@ document.getElementById("screeningForm").addEventListener("submit", function(e){
     }
 
 });
+
+localStorage.setItem(
+    "latestScreening",
+    JSON.stringify(screening)
+);
