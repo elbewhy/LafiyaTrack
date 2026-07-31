@@ -28,16 +28,17 @@ updatedAt:new Date().toISOString(),
 syncStatus:"PENDING"
 
 };
+  
+let outreachSessions =
+Storage.get("outreachSessions") || [];
 
-let outreachs=
+outreachSessions.push(outreach);
 
-Storage.get("outreachs") || [];
+Storage.save(
+"outreachSessions",
+outreachSessions
+);
 
-outreachs.push(outreach);
-
-Storage.save("outreachs",outreachs);
-
-Storage.save("currentOutreach",outreach);
 
 alert("Outreach Started Successfully.");
 
