@@ -1,32 +1,46 @@
-// Automatically set today's date
-const dateField = document.getElementById("date");
+document
+.getElementById("outreachForm")
+.addEventListener("submit", function(e){
 
-dateField.value = new Date().toISOString().split("T")[0];
+e.preventDefault();
 
-// Handle form submission
-document.getElementById("outreachForm").addEventListener("submit", function (event) {
+const outreach={
 
-event.preventDefault();
+id:crypto.randomUUID(),
 
-const session = {
+programme:document
+.getElementById("programme").value,
 
-programme: document.getElementById("programme").value,
+village:document
+.getElementById("village").value,
 
-activity: document.getElementById("activity").value,
+date:document
+.getElementById("date").value,
 
-village: document.getElementById("village").value,
+status:"ACTIVE",
 
-date: document.getElementById("date").value,
+households:[],
 
-status: "ACTIVE"
+createdAt:new Date().toISOString(),
+
+updatedAt:new Date().toISOString(),
+
+syncStatus:"PENDING"
 
 };
 
-// Temporary local storage
-localStorage.setItem("activeOutreach", JSON.stringify(session));
+let outreachs=
 
-alert("Outreach session started successfully!");
+Storage.get("outreachs") || [];
 
-window.location.href = "dashboard.html";
+outreachs.push(outreach);
+
+Storage.save("outreachs",outreachs);
+
+Storage.save("currentOutreach",outreach);
+
+alert("Outreach Started Successfully.");
+
+window.location.href="household.html";
 
 });
