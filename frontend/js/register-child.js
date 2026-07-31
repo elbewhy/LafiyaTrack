@@ -1,59 +1,53 @@
-const option=document.getElementById("dobOption");
+document.getElementById("childForm").addEventListener("submit", function (e) {
 
-option.addEventListener("change",()=>{
+    e.preventDefault();
 
-if(option.value==="yes"){
+    const household = Storage.get("currentHousehold");
 
-document.getElementById("dobSection").style.display="block";
+    if (!household) {
 
-document.getElementById("ageSection").style.display="none";
+        alert("Please register a household first.");
 
-}else{
+        window.location.href = "household.html";
 
-document.getElementById("dobSection").style.display="none";
+        return;
 
-document.getElementById("ageSection").style.display="block";
+    }
 
-}
+    const child = {
 
-});
+        id: crypto.randomUUID(),
 
-document.getElementById("childForm").addEventListener("submit",(e)=>{
+        householdId: household.id,
 
-e.preventDefault();
+        firstName: document.getElementById("firstName").value,
 
-const currentHousehold=JSON.parse(localStorage.getItem("currentHousehold"));
+        lastName: document.getElementById("lastName").value,
 
-const child={
+        sex: document.getElementById("sex").value,
 
-id:crypto.randomUUID(),
+        dob: document.getElementById("dob").value,
 
-householdId:currentHousehold.id,
+        estimatedAgeMonths: Number(document.getElementById("ageMonths").value) || null,
 
-firstName:document.getElementById("firstName").value,
+        createdAt: new Date().toISOString(),
 
-lastName:document.getElementById("lastName").value,
+        updatedAt: new Date().toISOString(),
 
-sex:document.getElementById("sex").value,
+        syncStatus: "PENDING"
 
-dob:document.getElementById("dob").value,
+    };
 
-estimatedAgeMonths:document.getElementById("ageMonths").value,
+    let children = Storage.get("children") || [];
 
-createdAt:new Date().toISOString()
+    children.push(child);
 
-};
+    Storage.save("children", children);
 
-let children=JSON.parse(localStorage.getItem("children"))||[];
+    Storage.save("currentChild", child);
 
-children.push(child);
+    alert("Child Registered Successfully.");
 
-localStorage.setItem("children",JSON.stringify(children));
-
-localStorage.setItem("currentChild",JSON.stringify(child));
-
-alert("Child registered successfully!");
-
-window.location.href="screening.html";
+    window.location.href = "screening.html";
 
 });
