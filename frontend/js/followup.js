@@ -44,4 +44,14 @@ alert("Follow-up Scheduled Successfully!");
 
 window.location.href="dashboard.html";
 
+});"followups",
+
+JSON.stringify(followups)
+
+);
+
+alert("Follow-up Scheduled Successfully!");
+
+window.location.href="dashboard.html";
+
 });
