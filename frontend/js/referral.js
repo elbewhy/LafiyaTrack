@@ -1,55 +1,56 @@
-const latestScreening =
-JSON.parse(localStorage.getItem("latestScreening"));
+const child = Storage.get("currentChild");
+const screening = Storage.get("currentScreening");
 
-document.getElementById("reason").value =
-latestScreening.status;
+if (!child || !screening) {
 
-document
-.getElementById("referralForm")
-.addEventListener("submit", function(e){
+    alert("No active child or screening found.");
 
-e.preventDefault();
+    window.location.href = "dashboard.html";
 
-const referral={
+}
 
-id:crypto.randomUUID(),
+document.getElementById("childName").textContent =
+child.firstName + " " + child.lastName;
 
-childId:latestScreening.childId,
+document.getElementById("nutritionStatus").textContent =
+screening.status;
 
-facility:document.getElementById("facility").value,
+document.getElementById("referralForm").addEventListener("submit", function (e) {
 
-reason:latestScreening.status,
+    e.preventDefault();
 
-notes:document.getElementById("notes").value,
+    const referral = {
 
-status:"Pending",
+        id: crypto.randomUUID(),
 
-createdAt:new Date().toISOString(),
+        childId: child.id,
 
-updatedAt:new Date().toISOString(),
+        screeningId: screening.id,
 
-syncStatus:"PENDING"
+        facility: document.getElementById("facility").value,
 
-};
+        status: "Pending",
 
-let referrals=
-JSON.parse(localStorage.getItem("referrals"))||[];
+        notes: document.getElementById("notes").value,
 
-referrals.push(referral);
+        createdAt: new Date().toISOString(),
 
-localStorage.setItem(
+        updatedAt: new Date().toISOString(),
 
-"referrals",
+        syncStatus: "PENDING"
 
-JSON.stringify(referrals)
+    };
 
-);
+    let referrals = Storage.get("referrals") || [];
 
-window.location.href="followup.html";
+    referrals.push(referral);
+
+    Storage.save("referrals", referrals);
+
+    Storage.save("currentReferral", referral);
+
+    alert("Referral created successfully.");
+
+    window.location.href = "followup.html";
 
 });
-
-localStorage.setItem(
-    "latestReferral",
-    JSON.stringify(referral)
-);
