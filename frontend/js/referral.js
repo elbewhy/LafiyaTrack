@@ -48,3 +48,8 @@ JSON.stringify(referrals)
 window.location.href="followup.html";
 
 });
+
+localStorage.setItem(
+    "latestReferral",
+    JSON.stringify(referral)
+);
