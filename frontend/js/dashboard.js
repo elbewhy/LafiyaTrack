@@ -1,25 +1,57 @@
-function loadDashboard() {
+// Load data from storage
 
-    const children = Storage.get("children") || [];
+const households = Storage.get("households") || [];
 
-    const screenings = Storage.get("screenings") || [];
+const children = Storage.get("children") || [];
 
-    const referrals = Storage.get("referrals") || [];
+const screenings = Storage.get("screenings") || [];
 
-    const followups = Storage.get("followups") || [];
+const referrals = Storage.get("referrals") || [];
 
-    document.getElementById("childrenCount").textContent =
-        children.length;
+const followups = Storage.get("followups") || [];
 
-    document.getElementById("screeningCount").textContent =
-        screenings.length;
 
-    document.getElementById("referralCount").textContent =
-        referrals.length;
+// Update totals
 
-    document.getElementById("followupCount").textContent =
-        followups.length;
+document.getElementById("householdsCount").textContent = households.length;
 
-}
+document.getElementById("childrenCount").textContent = children.length;
 
-loadDashboard();
+document.getElementById("screeningsCount").textContent = screenings.length;
+
+
+// Nutrition statistics
+
+const normal = screenings.filter(item => item.status === "NORMAL").length;
+
+const mam = screenings.filter(item => item.status === "MAM").length;
+
+const sam = screenings.filter(item => item.status === "SAM").length;
+
+document.getElementById("normalCount").textContent = normal;
+
+document.getElementById("mamCount").textContent = mam;
+
+document.getElementById("samCount").textContent = sam;
+
+
+// Referrals
+
+const pendingReferrals = referrals.filter(
+
+item => item.status === "Pending"
+
+).length;
+
+document.getElementById("referralCount").textContent = pendingReferrals;
+
+
+// Follow-ups
+
+const pendingFollowups = followups.filter(
+
+item => item.completed === false
+
+).length;
+
+document.getElementById("followupCount").textContent = pendingFollowups;
