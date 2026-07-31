@@ -1,55 +1,75 @@
-document
-.getElementById("householdForm")
-.addEventListener("submit",function(e){
+document.getElementById("householdForm").addEventListener("submit", function (e) {
 
-e.preventDefault();
+    e.preventDefault();
 
-const outreach=
-Storage.get("currentOutreach");
+    // Get the active outreach session
+    const outreach = Storage.get("currentOutreach");
 
-if(!outreach){
+    if (!outreach) {
+        alert("Please start an outreach session first.");
+        window.location.href = "outreach.html";
+        return;
+    }
 
-alert("Please start an outreach session first.");
+    // Create household object
+    const household = {
 
-window.location.href="outreach.html";
+        id: crypto.randomUUID(),
 
-return;
+        outreachId: outreach.id,
 
-}
+        headName: document.getElementById("headName").value,
 
-const household={
+        caregiver: document.getElementById("caregiver").value,
 
-id:crypto.randomUUID(),
+        phone: document.getElementById("phone").value,
 
-outreachId:outreach.id,
+        landmark: document.getElementById("landmark").value,
 
-headName:document.getElementById("headName").value,
+        createdAt: new Date().toISOString(),
 
-caregiver:document.getElementById("caregiver").value,
+        updatedAt: new Date().toISOString(),
 
-phone:document.getElementById("phone").value,
+        syncStatus: "PENDING"
 
-landmark:document.getElementById("landmark").value,
+    };
 
-createdAt:new Date().toISOString(),
+    // Save to households collection
+    let households = Storage.get("households") || [];
 
-updatedAt:new Date().toISOString(),
+    households.push(household);
 
-syncStatus:"PENDING"
+    Storage.save("households", households);
 
-};
+    // Add household to the active outreach session
+    if (!outreach.households) {
+        outreach.households = [];
+    }
 
-let households=
-Storage.get("households") || [];
+    outreach.households.push(household);
 
-households.push(household);
+    Storage.save("currentOutreach", outreach);
 
-Storage.save("households",households);
+    // Update outreachSessions list
+    let outreachSessions = Storage.get("outreachSessions") || [];
 
-Storage.save("currentHousehold",household);
+    outreachSessions = outreachSessions.map(session => {
 
-alert("Household Registered Successfully.");
+        if (session.id === outreach.id) {
+            return outreach;
+        }
 
-window.location.href="register-child.html";
+        return session;
+
+    });
+
+    Storage.save("outreachSessions", outreachSessions);
+
+    // Save current household
+    Storage.save("currentHousehold", household);
+
+    alert("Household Registered Successfully.");
+
+    window.location.href = "register-child.html";
 
 });
