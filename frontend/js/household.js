@@ -1,35 +1,55 @@
-document.getElementById("householdForm").addEventListener("submit", function(event){
+document
+.getElementById("householdForm")
+.addEventListener("submit",function(e){
 
-    event.preventDefault();
+e.preventDefault();
 
-    const household = {
+const outreach=
+Storage.get("currentOutreach");
 
-        id: crypto.randomUUID(),
+if(!outreach){
 
-        headName: document.getElementById("headName").value,
+alert("Please start an outreach session first.");
 
-        caregiver: document.getElementById("caregiver").value,
+window.location.href="outreach.html";
 
-        phone: document.getElementById("phone").value,
+return;
 
-        village: document.getElementById("village").value,
+}
 
-        landmark: document.getElementById("landmark").value,
+const household={
 
-        createdAt: new Date().toISOString()
+id:crypto.randomUUID(),
 
-    };
+outreachId:outreach.id,
 
-    let households = JSON.parse(localStorage.getItem("households")) || [];
+headName:document.getElementById("headName").value,
 
-    households.push(household);
+caregiver:document.getElementById("caregiver").value,
 
-    localStorage.setItem("households", JSON.stringify(households));
+phone:document.getElementById("phone").value,
 
-    localStorage.setItem("currentHousehold", JSON.stringify(household));
+landmark:document.getElementById("landmark").value,
 
-    alert("Household registered successfully!");
+createdAt:new Date().toISOString(),
 
-    window.location.href = "register-child.html";
+updatedAt:new Date().toISOString(),
+
+syncStatus:"PENDING"
+
+};
+
+let households=
+Storage.get("households") || [];
+
+households.push(household);
+
+Storage.save("households",households);
+
+Storage.save("currentHousehold",household);
+
+alert("Household Registered Successfully.");
+
+window.location.href="register-child.html";
 
 });
